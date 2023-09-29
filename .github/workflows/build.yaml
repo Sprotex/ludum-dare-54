@@ -1,0 +1,52 @@
+# Adapted from https://raw.githubusercontent.com/RudyMis/Bubbles/master/.github/workflows/godot-ci.yml
+
+name: deploy
+
+on:
+  push:
+    tags: 
+      - 'v*.*.*'
+
+env:
+  EXPORT_NAME: ludum-dare-54
+  GODOT_VERSION: 4.1.1
+
+jobs:
+  export-web:
+    name: Web Export\en\get-started\quickstart\fork-a-repo
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.1.1
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+          apt-get update && apt-get install -y rsync
+
+      - name: Web Build
+        run: |
+          mkdir ./$EXPORT_NAME
+          rsync -Rr . ./$EXPORT_NAME
+          cd $EXPORT_NAME
+          mkdir -v -p build/web
+          godot -v --export "Web" build/web/index.html
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: web
+          path: ${{ env.EXPORT_NAME }}/build/web
+
+      - name: Publish to itch.io
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.3
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: web
+          ITCH_GAME: ludum-dare-54
+          ITCH_USER: sprotex
+          PACKAGE: ${{ env.EXPORT_NAME }}/build/web
