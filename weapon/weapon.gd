@@ -16,15 +16,19 @@ func shoot() -> void:
   bullet_instance.global_rotation = global_rotation
 
 
+func reload() -> void:
+  is_reloading = true
+  await get_tree().create_timer(reload_time).timeout
+  is_reloading = false
+
+
 func try_shoot() -> void:
   if not inputs.shooting:
     return
   if is_reloading:
     return
   shoot()
-  is_reloading = true
-  await get_tree().create_timer(reload_time).timeout
-  is_reloading = false
+  reload()
 
 
 func _process(_delta) -> void:
