@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bof588v2k85x1"]
+[gd_scene load_steps=8 format=3 uid="uid://bof588v2k85x1"]
 
 [ext_resource type="PackedScene" uid="uid://d222y8cfa7ept" path="res://player/player.tscn" id="1_6hflv"]
+[ext_resource type="Script" path="res://player/camera_rig.gd" id="2_c7l6l"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xrfma"]
 size = Vector2(50, 50)
@@ -14,7 +15,6 @@ size = Vector3(1, 0.3, 1)
 size = Vector3(1, 0.3, 1)
 
 [sub_resource type="Environment" id="Environment_rqok1"]
-background_mode = 1
 ambient_light_source = 1
 
 [node name="Level" type="Node3D"]
@@ -43,8 +43,12 @@ mesh = SubResource("BoxMesh_38jm2")
 [node name="Player" parent="." instance=ExtResource("1_6hflv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46911, 2.68216)
+[node name="CameraRig" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2_c7l6l")
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46911, 2.68216)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rqok1")
