@@ -19,6 +19,8 @@ func die() -> void:
   if type == Type.PLAYER:
     MessageBus.on_player_died.emit()
     return
+  if type == Type.ENEMY:
+    MessageBus.on_enemy_died.emit()
   queue_free()
 
 

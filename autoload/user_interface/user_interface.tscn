@@ -1,11 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8kvui44qiu65"]
+[gd_scene load_steps=4 format=3 uid="uid://c8kvui44qiu65"]
 
 [ext_resource type="Script" path="res://autoload/user_interface/user_interface.gd" id="1_a043w"]
+[ext_resource type="Script" path="res://autoload/user_interface/score_manager.gd" id="2_gftuk"]
+[ext_resource type="Script" path="res://autoload/user_interface/score_label.gd" id="2_y53gy"]
 
-[node name="UserInterface" type="CanvasLayer" node_paths=PackedStringArray("death_screen", "mouse_filter_exceptions")]
+[node name="UserInterface" type="CanvasLayer" node_paths=PackedStringArray("death_screen", "static_set_nodes", "descending_stop_nodes", "hide_nodes")]
 script = ExtResource("1_a043w")
 death_screen = NodePath("Anchors/DeathScreen")
-mouse_filter_exceptions = [NodePath("Anchors")]
+static_set_nodes = [NodePath("Anchors")]
+descending_stop_nodes = [NodePath("Anchors/TopLeftAnchor"), NodePath("Anchors/BottomLeftAnchor")]
+hide_nodes = [NodePath("Anchors/DeathScreen")]
 
 [node name="Anchors" type="Control" parent="."]
 layout_mode = 3
@@ -15,6 +19,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="TopLeftAnchor" type="Control" parent="Anchors"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Anchors/TopLeftAnchor"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Anchors/TopLeftAnchor/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Anchors/TopLeftAnchor/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score: "
+
+[node name="Score counter" type="Label" parent="Anchors/TopLeftAnchor/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("2_y53gy")
 
 [node name="BottomLeftAnchor" type="Control" parent="Anchors"]
 layout_mode = 1
@@ -85,5 +117,8 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 text = "Restart"
+
+[node name="ScoreManager" type="Node" parent="."]
+script = ExtResource("2_gftuk")
 
 [connection signal="pressed" from="Anchors/DeathScreen/VBoxContainer/PanelContainer/Button" to="." method="_on_restart_button_pressed"]
