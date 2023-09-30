@@ -1,3 +1,53 @@
-[gd_scene format=3 uid="uid://bof588v2k85x1"]
+[gd_scene load_steps=7 format=3 uid="uid://bof588v2k85x1"]
 
-[node name="Level" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://d222y8cfa7ept" path="res://player.tscn" id="1_6hflv"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xrfma"]
+size = Vector2(50, 50)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_528qu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hly5r"]
+size = Vector3(1, 0.3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_38jm2"]
+size = Vector3(1, 0.3, 1)
+
+[sub_resource type="Environment" id="Environment_rqok1"]
+background_mode = 1
+ambient_light_source = 1
+
+[node name="Level" type="Node3D"]
+
+[node name="Static" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Static"]
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Floor"]
+mesh = SubResource("PlaneMesh_xrfma")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Floor"]
+shape = SubResource("WorldBoundaryShape3D_528qu")
+
+[node name="Platform" type="StaticBody3D" parent="Static"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699092, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Platform"]
+shape = SubResource("BoxShape3D_hly5r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Platform"]
+mesh = SubResource("BoxMesh_38jm2")
+
+[node name="Player" parent="." instance=ExtResource("1_6hflv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46911, 2.68216)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rqok1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
