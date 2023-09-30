@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d222y8cfa7ept"]
+[gd_scene load_steps=6 format=3 uid="uid://d222y8cfa7ept"]
 
 [ext_resource type="Script" path="res://player/movement.gd" id="1_3k5wx"]
-[ext_resource type="Script" path="res://player/keyboard_input.gd" id="2_3lhrg"]
-[ext_resource type="Script" path="res://player/inputs.gd" id="2_7e5e5"]
-[ext_resource type="Script" path="res://player/mouse_input.gd" id="4_ctr32"]
+[ext_resource type="Script" path="res://player/player_inputs.gd" id="2_md3f1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dhca4"]
 
@@ -33,15 +31,7 @@ shape = SubResource("CapsuleShape3D_1mw0j")
 [node name="Movement" type="Node" parent="Control" node_paths=PackedStringArray("character_body", "inputs")]
 script = ExtResource("1_3k5wx")
 character_body = NodePath("../..")
-inputs = NodePath("../Inputs")
+inputs = NodePath("../PlayerInputs")
 
-[node name="Inputs" type="Node" parent="Control"]
-script = ExtResource("2_7e5e5")
-
-[node name="Keyboard Input" type="Node" parent="Control/Inputs" node_paths=PackedStringArray("inputs")]
-script = ExtResource("2_3lhrg")
-inputs = NodePath("..")
-
-[node name="Mouse Input" type="Node" parent="Control/Inputs" node_paths=PackedStringArray("inputs")]
-script = ExtResource("4_ctr32")
-inputs = NodePath("..")
+[node name="PlayerInputs" type="Node" parent="Control"]
+script = ExtResource("2_md3f1")

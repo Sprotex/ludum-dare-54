@@ -1,7 +1,7 @@
 extends Node
 
 @export var character_body: CharacterBody3D
-@export var inputs: Inputs
+@export var inputs: CharacterInputs
 @export var movement_speed: float = 3.0
 @export var rotation_speed: float = 1.0
 
