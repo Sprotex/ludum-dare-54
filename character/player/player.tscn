@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d222y8cfa7ept"]
+[gd_scene load_steps=7 format=3 uid="uid://d222y8cfa7ept"]
 
-[ext_resource type="Script" path="res://player/movement.gd" id="1_3k5wx"]
-[ext_resource type="Script" path="res://player/player_inputs.gd" id="2_md3f1"]
+[ext_resource type="Script" path="res://character/player/player_movement.gd" id="1_asweq"]
+[ext_resource type="Script" path="res://character/player/player_inputs.gd" id="2_p7gc2"]
+[ext_resource type="Script" path="res://character/player/camera_rig.gd" id="3_le5wo"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dhca4"]
 
@@ -28,12 +29,17 @@ shape = SubResource("CapsuleShape3D_1mw0j")
 
 [node name="Control" type="Node" parent="."]
 
-[node name="Movement" type="Node" parent="Control" node_paths=PackedStringArray("character_body", "inputs")]
-script = ExtResource("1_3k5wx")
+[node name="PlayerMovement" type="Node" parent="Control" node_paths=PackedStringArray("character_body", "inputs")]
+script = ExtResource("1_asweq")
 character_body = NodePath("../..")
 inputs = NodePath("../PlayerInputs")
-jump_power = 1.0
-air_friction_multiplier = 0.95
 
 [node name="PlayerInputs" type="Node" parent="Control"]
-script = ExtResource("2_md3f1")
+script = ExtResource("2_p7gc2")
+
+[node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("3_le5wo")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46911, 2.68216)
