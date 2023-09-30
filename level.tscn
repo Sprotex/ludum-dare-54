@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bof588v2k85x1"]
 
-[ext_resource type="PackedScene" uid="uid://d222y8cfa7ept" path="res://player.tscn" id="1_6hflv"]
+[ext_resource type="PackedScene" uid="uid://d222y8cfa7ept" path="res://player/player.tscn" id="1_6hflv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xrfma"]
 size = Vector2(50, 50)

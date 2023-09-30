@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d222y8cfa7ept"]
+[gd_scene load_steps=5 format=3 uid="uid://d222y8cfa7ept"]
+
+[ext_resource type="Script" path="res://player/movement.gd" id="1_3k5wx"]
+[ext_resource type="Script" path="res://player/input_vector.gd" id="2_imiaq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dhca4"]
 
@@ -16,3 +19,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_1mw0j")
 
 [node name="Control" type="Node" parent="."]
+
+[node name="Movement" type="Node" parent="Control" node_paths=PackedStringArray("character_body", "input_vector")]
+script = ExtResource("1_3k5wx")
+character_body = NodePath("../..")
+input_vector = NodePath("../Input Vector")
+
+[node name="Input Vector" type="Node" parent="Control"]
+script = ExtResource("2_imiaq")
