@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d222y8cfa7ept"]
+[gd_scene load_steps=9 format=3 uid="uid://d222y8cfa7ept"]
 
 [ext_resource type="Script" path="res://character/player/player_movement.gd" id="1_asweq"]
 [ext_resource type="Script" path="res://character/player/player_inputs.gd" id="2_p7gc2"]
 [ext_resource type="Script" path="res://character/player/camera_rig.gd" id="3_le5wo"]
+[ext_resource type="PackedScene" uid="uid://bi7ck8n3ra58w" path="res://weapon/weapon.tscn" id="4_tvx64"]
+[ext_resource type="PackedScene" uid="uid://bem04yqq2onsr" path="res://character/bullet/bullet.tscn" id="5_aubcv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dhca4"]
 
@@ -43,3 +45,11 @@ script = ExtResource("3_le5wo")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46911, 2.68216)
+
+[node name="Weapon" parent="CameraRig/Camera3D" node_paths=PackedStringArray("inputs", "firepoint") instance=ExtResource("4_tvx64")]
+inputs = NodePath("../../../Control/PlayerInputs")
+bullet = ExtResource("5_aubcv")
+firepoint = NodePath("Marker3D")
+
+[node name="Marker3D" type="Marker3D" parent="CameraRig/Camera3D/Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)

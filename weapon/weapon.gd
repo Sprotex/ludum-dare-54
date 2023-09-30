@@ -10,8 +10,9 @@ var is_reloading := false
 
 
 func shoot() -> void:
-  bullet.instantiate()
-  bullet.global_position = firepoint.global_position
+  var bullet_instance = bullet.instantiate()
+  get_tree().get_root().add_child(bullet_instance)
+  bullet_instance.global_position = firepoint.global_position
 
 
 func try_shoot() -> void:
