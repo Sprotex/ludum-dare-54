@@ -1,10 +1,6 @@
 extends Node
 
 
-func _ready() -> void:
-  Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-
 func _handle_movement(event: InputEvent) -> void:
   if not event is InputEventMouseMotion:
     return

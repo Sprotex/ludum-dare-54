@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dx3c8qi166vue"]
 
-[ext_resource type="Script" path="res://inputs/game_inputs.gd" id="1_rceeq"]
-[ext_resource type="Script" path="res://inputs/keyboard_input.gd" id="2_8v2br"]
-[ext_resource type="Script" path="res://inputs/mouse_input.gd" id="3_8syqm"]
+[ext_resource type="Script" path="res://autoload/inputs/game_inputs.gd" id="1_rceeq"]
+[ext_resource type="Script" path="res://autoload/inputs/keyboard_input.gd" id="2_8v2br"]
+[ext_resource type="Script" path="res://autoload/inputs/mouse_input.gd" id="3_8syqm"]
 
 [node name="Game Inputs" type="Node"]
 script = ExtResource("1_rceeq")

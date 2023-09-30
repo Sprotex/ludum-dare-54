@@ -1,0 +1,4 @@
+extends Node
+
+signal on_player_died
+signal on_scene_reloaded

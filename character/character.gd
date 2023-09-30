@@ -17,7 +17,7 @@ func set_health() -> void:
 
 func die() -> void:
   if type == Type.PLAYER:
-    print("player ded")
+    MessageBus.on_player_died.emit()
     return
   queue_free()
 
