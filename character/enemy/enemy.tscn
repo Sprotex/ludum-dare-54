@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv8p0ro6ci4wl"]
+
+[ext_resource type="PackedScene" uid="uid://d222y8cfa7ept" path="res://character/character.tscn" id="1_vcct7"]
+[ext_resource type="Script" path="res://character/character_movement.gd" id="2_1pujd"]
+
+[node name="Enemy" instance=ExtResource("1_vcct7")]
+
+[node name="CharacterMovement" type="Node" parent="Control" index="0" node_paths=PackedStringArray("character_body")]
+script = ExtResource("2_1pujd")
+character_body = NodePath("../..")
