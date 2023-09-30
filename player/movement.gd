@@ -7,9 +7,10 @@ extends Node
 
 
 func move(delta: float) -> void:
-  var framerate_independent_movement = inputs.movement * movement_speed * delta
+  var framerate_independent_movement = inputs.movement * movement_speed 
   var local_movement = character_body.global_transform.basis * framerate_independent_movement
-  character_body.move_and_collide(local_movement)
+  character_body.velocity = local_movement
+  character_body.move_and_slide()
 
 
 func rotate(_delta: float) -> void:
