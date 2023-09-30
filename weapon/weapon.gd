@@ -5,6 +5,7 @@ extends Node3D
 @export var reload_time := 0.5
 @export var bullet: PackedScene
 @export var firepoint: Node3D
+@export var firepoint_direction: Node3D
 
 var is_reloading := false
 
@@ -13,7 +14,7 @@ func shoot() -> void:
   var bullet_instance = bullet.instantiate()
   get_tree().get_root().add_child(bullet_instance)
   bullet_instance.global_position = firepoint.global_position
-  bullet_instance.global_rotation = global_rotation
+  bullet_instance.global_rotation = firepoint_direction.global_rotation
 
 
 func reload() -> void:
