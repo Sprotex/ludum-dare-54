@@ -32,7 +32,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.086579, -0.537678)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_1mw0j")
 
-[node name="Weapon" parent="." node_paths=PackedStringArray("firepoint") instance=ExtResource("4_5vcc8")]
+[node name="Weapon" parent="." node_paths=PackedStringArray("character_body", "firepoint") instance=ExtResource("4_5vcc8")]
+character_body = NodePath("..")
 bullet = ExtResource("5_wndih")
 firepoint = NodePath("../MeshInstance3D2/Firepoint")
 

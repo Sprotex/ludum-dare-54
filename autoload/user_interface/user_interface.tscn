@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8kvui44qiu65"]
+[gd_scene load_steps=6 format=3 uid="uid://c8kvui44qiu65"]
 
 [ext_resource type="Script" path="res://autoload/user_interface/user_interface.gd" id="1_a043w"]
 [ext_resource type="Script" path="res://autoload/user_interface/score_manager.gd" id="2_gftuk"]
 [ext_resource type="Script" path="res://autoload/user_interface/score_label.gd" id="2_y53gy"]
+[ext_resource type="Texture2D" uid="uid://q2i4cs5jl1pf" path="res://icon.svg" id="3_kw0jx"]
+[ext_resource type="Script" path="res://autoload/user_interface/reload_progress_bar.gd" id="4_vokve"]
 
 [node name="UserInterface" type="CanvasLayer" node_paths=PackedStringArray("death_screen", "static_set_nodes", "descending_stop_nodes", "hide_nodes")]
 script = ExtResource("1_a043w")
 death_screen = NodePath("Anchors/DeathScreen")
 static_set_nodes = [NodePath("Anchors")]
-descending_stop_nodes = [NodePath("Anchors/TopLeftAnchor"), NodePath("Anchors/BottomLeftAnchor")]
+descending_stop_nodes = [NodePath(""), NodePath("")]
 hide_nodes = [NodePath("Anchors/DeathScreen")]
 
 [node name="Anchors" type="Control" parent="."]
@@ -20,51 +22,52 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TopLeftAnchor" type="Control" parent="Anchors"]
+[node name="TopLeftAnchor" type="MarginContainer" parent="Anchors"]
 layout_mode = 1
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Anchors/TopLeftAnchor"]
-layout_mode = 0
-offset_right = 40.0
+offset_right = 72.0
 offset_bottom = 40.0
 mouse_filter = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer" type="HBoxContainer" parent="Anchors/TopLeftAnchor/MarginContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="Anchors/TopLeftAnchor"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Anchors/TopLeftAnchor/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Anchors/TopLeftAnchor/VBoxContainer"]
 layout_mode = 2
 text = "Score: "
 
-[node name="Score counter" type="Label" parent="Anchors/TopLeftAnchor/MarginContainer/VBoxContainer"]
+[node name="Score counter" type="Label" parent="Anchors/TopLeftAnchor/VBoxContainer"]
 layout_mode = 2
 text = "0"
 script = ExtResource("2_y53gy")
 
-[node name="BottomLeftAnchor" type="Control" parent="Anchors"]
+[node name="BottomLeftAnchor" type="MarginContainer" parent="Anchors"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
+offset_top = -138.0
+offset_right = 138.0
 grow_vertical = 0
 mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Anchors/BottomLeftAnchor"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+alignment = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Anchors/BottomLeftAnchor/HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 8
+max_value = 1.0
+step = 0.01
+value = 1.0
+fill_mode = 4
+texture_progress = ExtResource("3_kw0jx")
+script = ExtResource("4_vokve")
 
 [node name="DeathScreen" type="Control" parent="Anchors"]
 layout_mode = 1
