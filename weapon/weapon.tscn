@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi7ck8n3ra58w"]
+
+[ext_resource type="Script" path="res://weapon/weapon.gd" id="1_jvb8u"]
+
+[node name="Weapon" type="Node3D"]
+script = ExtResource("1_jvb8u")
+reload_time = 0.2

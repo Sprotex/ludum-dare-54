@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bof588v2k85x1"]
+[gd_scene load_steps=9 format=3 uid="uid://bof588v2k85x1"]
 
-[ext_resource type="PackedScene" uid="uid://d222y8cfa7ept" path="res://player/player.tscn" id="1_6hflv"]
-[ext_resource type="Script" path="res://player/camera_rig.gd" id="2_c7l6l"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_xrfma"]
-size = Vector2(50, 50)
+[ext_resource type="PackedScene" uid="uid://c7fldyilqdf73" path="res://dome/hemisphere.tscn" id="1_4po3j"]
+[ext_resource type="PackedScene" uid="uid://d3kkn2idgjotw" path="res://character/player/player.tscn" id="1_6hflv"]
+[ext_resource type="PackedScene" uid="uid://b7t8fb13vp205" path="res://dome/icosphere.tscn" id="4_kft5k"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_528qu"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3hatp"]
+size = Vector2(100, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hly5r"]
 size = Vector3(1, 0.3, 1)
@@ -24,11 +25,13 @@ ambient_light_source = 1
 [node name="Floor" type="StaticBody3D" parent="Static"]
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Floor"]
-mesh = SubResource("PlaneMesh_xrfma")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Floor"]
+visible = false
 shape = SubResource("WorldBoundaryShape3D_528qu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Floor"]
+mesh = SubResource("PlaneMesh_3hatp")
+skeleton = NodePath("../..")
 
 [node name="Platform" type="StaticBody3D" parent="Static"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699092, 0)
@@ -40,18 +43,16 @@ shape = SubResource("BoxShape3D_hly5r")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Platform"]
 mesh = SubResource("BoxMesh_38jm2")
 
-[node name="Player" parent="." instance=ExtResource("1_6hflv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-
-[node name="CameraRig" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("2_c7l6l")
-
-[node name="Camera3D" type="Camera3D" parent="Player/CameraRig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46911, 2.68216)
+[node name="hemisphere" parent="Static" instance=ExtResource("1_4po3j")]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rqok1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="icosphere" parent="." instance=ExtResource("4_kft5k")]
+
+[node name="Player" parent="." instance=ExtResource("1_6hflv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
