@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bem04yqq2onsr"]
+[gd_scene load_steps=8 format=3 uid="uid://bem04yqq2onsr"]
 
 [ext_resource type="Script" path="res://character/bullet/bullet_inputs.gd" id="2_dovvs"]
 [ext_resource type="Script" path="res://character/bullet/bulllet_collisions.gd" id="3_0rm1p"]
@@ -14,6 +14,14 @@ rings = 1
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xl1i8"]
 height = 0.2
 radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vldc"]
+shading_mode = 0
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_7sshu"]
+material = SubResource("StandardMaterial3D_2vldc")
+size = Vector2(0.1, 0.1)
 
 [node name="Bullet" type="CharacterBody3D"]
 
@@ -33,11 +41,18 @@ character_body = NodePath("..")
 script = ExtResource("3_v485l")
 character_body = NodePath("..")
 inputs = NodePath("../BulletInputs")
-movement_speed = 50.0
+movement_speed = 10.0
 
 [node name="BulletInputs" type="Node" parent="."]
 script = ExtResource("2_dovvs")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 50
+lifetime = 0.2
+mesh = SubResource("QuadMesh_7sshu")
+direction = Vector3(0, 0, 0)
+metadata/_edit_lock_ = true
 
 [connection signal="on_collision" from="BulletMovement" to="BulletCollisions" method="_on_bullet_collision"]

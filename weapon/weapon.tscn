@@ -4,3 +4,4 @@
 
 [node name="Weapon" type="Node3D"]
 script = ExtResource("1_jvb8u")
+reload_time = 0.2
