@@ -33,6 +33,7 @@ script = ExtResource("1_3k5wx")
 character_body = NodePath("../..")
 inputs = NodePath("../PlayerInputs")
 jump_power = 1.0
+air_friction_multiplier = 0.95
 
 [node name="PlayerInputs" type="Node" parent="Control"]
 script = ExtResource("2_md3f1")
