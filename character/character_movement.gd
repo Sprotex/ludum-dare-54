@@ -15,13 +15,13 @@ func get_gravity_magnitude() -> float:
   return ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
-func calculate_movement(delta: float) -> Vector3:
-  # NOTE(Andy): To be overriden.
-  return Vector3.ZERO
+# NOTE(Andy): To be overriden.
+func calculate_movement(_initial_movement: Vector3, _delta: float) -> Vector3:
+  return character_body.global_transform.basis * inputs.movement * movement_speed
 
 
 func move(delta: float) -> void:
-  character_body.velocity = calculate_movement(delta)
+  character_body.velocity = calculate_movement(character_body.velocity, delta)
   character_body.move_and_slide()
 
 

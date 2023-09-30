@@ -8,8 +8,8 @@ class_name PlayerMovement
 @export var air_movement_multiplier := 0.1
 
 
-func calculate_movement(delta: float) -> Vector3:
-  var movement = calculate_lateral_movement(character_body.velocity)
+func calculate_movement(initial_movement: Vector3, delta: float) -> Vector3:
+  var movement = calculate_lateral_movement(initial_movement)
   movement = calculate_jump_movement(movement)
   movement = calculate_gravity_movement(movement, delta)
   movement = calculate_friction_movement(movement)

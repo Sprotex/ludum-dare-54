@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bem04yqq2onsr"]
 
-[ext_resource type="Script" path="res://character/player/movement.gd" id="1_f4ix8"]
 [ext_resource type="Script" path="res://character/bullet/bullet_inputs.gd" id="2_dovvs"]
 [ext_resource type="Script" path="res://character/bullet/bulllet_collisions.gd" id="3_0rm1p"]
+[ext_resource type="Script" path="res://character/bullet/bullet_movement.gd" id="3_v485l"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_t74t5"]
 top_radius = 0.1
@@ -18,21 +18,26 @@ radius = 0.1
 [node name="Bullet" type="CharacterBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_t74t5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_xl1i8")
-
-[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("character_body", "inputs")]
-script = ExtResource("1_f4ix8")
-character_body = NodePath("..")
-inputs = NodePath("../BulletInputs")
-
-[node name="BulletInputs" type="Node" parent="."]
-script = ExtResource("2_dovvs")
 
 [node name="BulletCollisions" type="Node" parent="." node_paths=PackedStringArray("character_body")]
 script = ExtResource("3_0rm1p")
 character_body = NodePath("..")
 
+[node name="BulletMovement" type="Node" parent="." node_paths=PackedStringArray("character_body", "inputs")]
+script = ExtResource("3_v485l")
+character_body = NodePath("..")
+inputs = NodePath("../BulletInputs")
+movement_speed = 50.0
+
+[node name="BulletInputs" type="Node" parent="."]
+script = ExtResource("2_dovvs")
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+
+[connection signal="on_collision" from="BulletMovement" to="BulletCollisions" method="_on_bullet_collision"]

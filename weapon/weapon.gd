@@ -13,6 +13,7 @@ func shoot() -> void:
   var bullet_instance = bullet.instantiate()
   get_tree().get_root().add_child(bullet_instance)
   bullet_instance.global_position = firepoint.global_position
+  bullet_instance.global_rotation = global_rotation
 
 
 func try_shoot() -> void:

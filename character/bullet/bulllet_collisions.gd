@@ -3,16 +3,9 @@ extends Node
 @export var character_body: CharacterBody3D
 
 
-func try_ricochet() -> void:
-  var last_slide_collision = character_body.get_last_slide_collision()
-  if not last_slide_collision:
-    return
-  # var collider = last_slide_collision.get_collider()
-  var collision_normal = last_slide_collision.get_normal()
-  var new_velocity = character_body.velocity.reflect(collision_normal)
-  character_body.velocity = new_velocity
-  character_body.position -= new_velocity
+func _on_bullet_collision(collision: KinematicCollision3D) -> void:
+  var collision_normal = collision.get_normal()
+  var travel_direction = collision.get_travel()
+  var reflected_direction = travel_direction.bounce(collision_normal)
+  character_body.global_transform.basis = Basis.looking_at(reflected_direction)
 
-
-func _physics_process(_delta: float) -> void:
-  try_ricochet.call_deferred()

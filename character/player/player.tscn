@@ -25,6 +25,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.5)
 mesh = SubResource("BoxMesh_87ork")
 skeleton = NodePath("")
 
+[node name="Marker3D" type="Marker3D" parent="MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.086579, -0.537678)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_1mw0j")
@@ -49,7 +52,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46911, 2.68216)
 [node name="Weapon" parent="CameraRig/Camera3D" node_paths=PackedStringArray("inputs", "firepoint") instance=ExtResource("4_tvx64")]
 inputs = NodePath("../../../Control/PlayerInputs")
 bullet = ExtResource("5_aubcv")
-firepoint = NodePath("Marker3D")
-
-[node name="Marker3D" type="Marker3D" parent="CameraRig/Camera3D/Weapon"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+firepoint = NodePath("../../../MeshInstance3D2/Marker3D")
