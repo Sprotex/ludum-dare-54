@@ -34,7 +34,7 @@ jobs:
           rsync -Rr . ./$EXPORT_NAME
           cd $EXPORT_NAME
           mkdir -v -p build/web
-          godot -v --export-release "Web" build/web/index.html
+          godot -v --rendering-driver opengl3 --export-release "Web" build/web/index.html
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
