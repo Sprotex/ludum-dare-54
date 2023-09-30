@@ -6,15 +6,9 @@
 [ext_resource type="Script" path="res://character/player/camera_rig.gd" id="3_le5wo"]
 
 [node name="Player" instance=ExtResource("1_t25yq")]
+type = 1
 
-[node name="CameraRig" type="Node3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-script = ExtResource("3_le5wo")
-
-[node name="Camera3D" type="Camera3D" parent="CameraRig" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46911, 2.68216)
-
-[node name="Weapon" parent="." index="4" node_paths=PackedStringArray("inputs", "firepoint_direction")]
+[node name="Weapon" parent="." index="3" node_paths=PackedStringArray("inputs", "firepoint_direction")]
 inputs = NodePath("../Control/PlayerInputs")
 firepoint_direction = NodePath("../CameraRig/Camera3D")
 
@@ -25,3 +19,10 @@ inputs = NodePath("../PlayerInputs")
 
 [node name="PlayerInputs" type="Node" parent="Control" index="1"]
 script = ExtResource("2_p7gc2")
+
+[node name="CameraRig" type="Node3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+script = ExtResource("3_le5wo")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46911, 2.18216)

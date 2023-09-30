@@ -1,5 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d222y8cfa7ept"]
+[gd_scene load_steps=8 format=3 uid="uid://d222y8cfa7ept"]
 
+[ext_resource type="Script" path="res://character/character.gd" id="1_2poh3"]
+[ext_resource type="Script" path="res://character/health.gd" id="3_bw4ni"]
 [ext_resource type="PackedScene" uid="uid://bi7ck8n3ra58w" path="res://weapon/weapon.tscn" id="4_5vcc8"]
 [ext_resource type="PackedScene" uid="uid://bem04yqq2onsr" path="res://character/bullet/bullet.tscn" id="5_wndih"]
 
@@ -11,6 +13,7 @@ size = Vector3(0.6, 0.3, 0.3)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mw0j"]
 
 [node name="Character" type="CharacterBody3D"]
+script = ExtResource("1_2poh3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -22,7 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.5)
 mesh = SubResource("BoxMesh_87ork")
 skeleton = NodePath("")
 
-[node name="Marker3D" type="Marker3D" parent="MeshInstance3D2"]
+[node name="Firepoint" type="Marker3D" parent="MeshInstance3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.086579, -0.537678)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -31,6 +34,10 @@ shape = SubResource("CapsuleShape3D_1mw0j")
 
 [node name="Weapon" parent="." node_paths=PackedStringArray("firepoint") instance=ExtResource("4_5vcc8")]
 bullet = ExtResource("5_wndih")
-firepoint = NodePath("../MeshInstance3D2/Marker3D")
+firepoint = NodePath("../MeshInstance3D2/Firepoint")
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("character_body")]
+script = ExtResource("3_bw4ni")
+character_body = NodePath("..")
 
 [node name="Control" type="Node" parent="."]

@@ -33,9 +33,10 @@ mesh = SubResource("CylinderMesh_t74t5")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_xl1i8")
 
-[node name="BulletCollisions" type="Node" parent="." node_paths=PackedStringArray("character_body")]
+[node name="BulletCollisions" type="Node" parent="." node_paths=PackedStringArray("character_body", "particles")]
 script = ExtResource("3_0rm1p")
 character_body = NodePath("..")
+particles = NodePath("../CPUParticles3D")
 
 [node name="BulletMovement" type="Node" parent="." node_paths=PackedStringArray("character_body", "inputs")]
 script = ExtResource("3_v485l")
@@ -50,9 +51,13 @@ script = ExtResource("2_dovvs")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 amount = 50
-lifetime = 0.2
+lifetime = 0.1
 mesh = SubResource("QuadMesh_7sshu")
-direction = Vector3(0, 0, 0)
+direction = Vector3(0, 0, -1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
 metadata/_edit_lock_ = true
 
 [connection signal="on_collision" from="BulletMovement" to="BulletCollisions" method="_on_bullet_collision"]
