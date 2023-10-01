@@ -18,7 +18,6 @@ func wait_for(wait_time: float) -> void:
 func turn(inputs: EnemyInputs, character_movement: CharacterMovement, rotation: float) -> void:
   var rotation_time = abs(rotation) / character_movement.rotation_speed
   inputs.rotation = Vector2.RIGHT * sign(rotation)
-  print(rotation_time)
   wait_for(rotation_time)
   await on_wait_timeout
   inputs.rotation = Vector2.ZERO

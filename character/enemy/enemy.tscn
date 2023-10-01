@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bv8p0ro6ci4wl"]
+[gd_scene load_steps=9 format=3 uid="uid://bv8p0ro6ci4wl"]
 
 [ext_resource type="PackedScene" uid="uid://d222y8cfa7ept" path="res://character/character.tscn" id="1_vcct7"]
 [ext_resource type="Script" path="res://character/character_movement.gd" id="2_1pujd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://character/enemy/wait_state.gd" id="5_fbvcl"]
 [ext_resource type="Script" path="res://character/enemy/random_move_state.gd" id="6_3rkmt"]
 [ext_resource type="Script" path="res://character/enemy/aim_at_player_state.gd" id="7_ia5cy"]
+[ext_resource type="Script" path="res://character/enemy/shoot_state.gd" id="8_hayji"]
 
 [node name="Enemy" instance=ExtResource("1_vcct7")]
 type = 2
@@ -46,4 +47,9 @@ script = ExtResource("7_ia5cy")
 inputs = NodePath("..")
 character_movement = NodePath("../../CharacterMovement")
 character_body = NodePath("../../..")
+next_state = NodePath("../ShootState")
+
+[node name="ShootState" type="Node" parent="Control/EnemyInputs" index="3" node_paths=PackedStringArray("inputs", "next_state")]
+script = ExtResource("8_hayji")
+inputs = NodePath("..")
 next_state = NodePath("../WaitState")
