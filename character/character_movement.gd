@@ -26,7 +26,7 @@ func move(delta: float) -> void:
 
 
 func rotate(_delta: float) -> void:
-  var rotation = inputs.rotation * rotation_speed * Constants.PIXEL_TO_DEGREE_RATIO
+  var rotation = inputs.rotation * rotation_speed
   character_body.rotate_y(deg_to_rad(-rotation.x))
 
 

@@ -1,14 +1,11 @@
 extends Node
 
 
-func _ready() -> void:
-  Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-
 func _handle_movement(event: InputEvent) -> void:
   if not event is InputEventMouseMotion:
     return
-  GameInputs.rotation += event.relative
+  var mouse_movement = Vector3(event.relative.x, event.relative.y, 0.0)
+  GameInputs.rotation += mouse_movement * Constants.PIXEL_TO_DEGREE_RATIO
 
 
 func _handle_buttons(event: InputEvent) -> void:
@@ -18,7 +15,7 @@ func _handle_buttons(event: InputEvent) -> void:
 
 
 func _zero_rotation() -> void:
-  GameInputs.rotation = Vector2.ZERO
+  GameInputs.rotation = Vector3.ZERO
 
 
 func _physics_process(_delta: float) -> void:

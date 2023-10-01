@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://bv8p0ro6ci4wl"]
+
+[ext_resource type="PackedScene" uid="uid://d222y8cfa7ept" path="res://character/character.tscn" id="1_vcct7"]
+[ext_resource type="Script" path="res://character/character_movement.gd" id="2_1pujd"]
+[ext_resource type="Material" uid="uid://cyqolvaksjvwp" path="res://character/enemy/enemy_material.tres" id="2_uixdu"]
+[ext_resource type="Script" path="res://character/enemy/enemy_inputs.gd" id="4_itv3x"]
+[ext_resource type="Script" path="res://character/enemy/wait_state.gd" id="5_fbvcl"]
+[ext_resource type="Script" path="res://character/enemy/random_move_state.gd" id="6_3rkmt"]
+[ext_resource type="Script" path="res://character/enemy/aim_at_player_state.gd" id="7_ia5cy"]
+[ext_resource type="Script" path="res://character/enemy/shoot_state.gd" id="8_hayji"]
+
+[node name="Enemy" instance=ExtResource("1_vcct7")]
+type = 2
+
+[node name="MeshInstance3D" parent="." index="0"]
+material_override = ExtResource("2_uixdu")
+
+[node name="MeshInstance3D2" parent="." index="1"]
+material_override = ExtResource("2_uixdu")
+
+[node name="Weapon" parent="." index="3" node_paths=PackedStringArray("inputs", "firepoint_direction")]
+inputs = NodePath("../Control/EnemyInputs")
+firepoint_direction = NodePath("../MeshInstance3D2/Firepoint")
+
+[node name="CharacterMovement" type="Node" parent="Control" index="0" node_paths=PackedStringArray("character_body", "inputs")]
+script = ExtResource("2_1pujd")
+character_body = NodePath("../..")
+inputs = NodePath("../EnemyInputs")
+rotation_speed = 10.0
+
+[node name="EnemyInputs" type="Node" parent="Control" index="1"]
+script = ExtResource("4_itv3x")
+
+[node name="WaitState" type="Node" parent="Control/EnemyInputs" index="0" node_paths=PackedStringArray("next_state")]
+script = ExtResource("5_fbvcl")
+next_state = NodePath("../RandomMoveState")
+enabled = true
+
+[node name="RandomMoveState" type="Node" parent="Control/EnemyInputs" index="1" node_paths=PackedStringArray("character_movement", "inputs", "next_state")]
+script = ExtResource("6_3rkmt")
+character_movement = NodePath("../../CharacterMovement")
+inputs = NodePath("..")
+next_state = NodePath("../AimAtPlayerState")
+
+[node name="AimAtPlayerState" type="Node" parent="Control/EnemyInputs" index="2" node_paths=PackedStringArray("inputs", "character_movement", "character_body", "next_state")]
+script = ExtResource("7_ia5cy")
+inputs = NodePath("..")
+character_movement = NodePath("../../CharacterMovement")
+character_body = NodePath("../../..")
+next_state = NodePath("../ShootState")
+
+[node name="ShootState" type="Node" parent="Control/EnemyInputs" index="3" node_paths=PackedStringArray("inputs", "next_state")]
+script = ExtResource("8_hayji")
+inputs = NodePath("..")
+next_state = NodePath("../WaitState")
