@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-
 @export var death_screen: Control
 @export var static_set_nodes: Array[Control]
 @export var descending_stop_nodes: Array[Control]
 @export var hide_nodes: Array[Control]
+
 
 func connect_once(_signal: Signal, callable: Callable) -> void:
   if _signal.is_connected(callable):
