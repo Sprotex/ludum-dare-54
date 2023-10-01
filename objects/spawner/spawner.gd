@@ -21,18 +21,20 @@ func _spawn_enemy() -> void:
   var offset = random.randf_range(min_path_offset, max_path_offset)
   var enemy_scene = select_random(enemy_scenes)
   var instance = enemy_scene.instantiate()
-  instance.global_position = path_follow.global_position + path_follow.basis.x * offset
+  instance.position = Vector3.DOWN * 50.0
   MessageBus.on_object_created.emit(instance)
+  instance.global_position = path_follow.global_position + path_follow.basis.x * offset
 
 
-func _a() -> void:
+func _respawn_enemy() -> void:
+  await get_tree().create_timer(enemy_death_respawn_period).timeout
   _spawn_enemy()
-  upgrade_spawner_timer.start()
 
 
 func _ready() -> void:
   await get_tree().create_timer(enemy_death_respawn_period).timeout
   for i in start_spawn_count:
     _spawn_enemy()
+  MessageBus.on_enemy_died.connect(_respawn_enemy)
   upgrade_spawner_timer.timeout.connect(_spawn_enemy)
   upgrade_spawner_timer.timeout.connect(func(): upgrade_spawner_timer.start())
