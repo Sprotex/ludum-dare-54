@@ -4,7 +4,7 @@ class_name PlayerInputs
 
 
 func _ready() -> void:
-  MessageBus.on_player_died.connect(_handle_player_died)
+  MessageBus.on_player_died.connect(_handle_player_died, CONNECT_DEFERRED)
 
 
 func _handle_player_died() -> void:
