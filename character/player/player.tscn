@@ -34,6 +34,3 @@ player = NodePath("..")
 [node name="AudioListener3D" type="AudioListener3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 current = true
-
-[node name="StepAudioLogic" parent="." index="9"]
-step_distance = 0.6
