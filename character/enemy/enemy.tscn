@@ -42,11 +42,12 @@ character_movement = NodePath("../../CharacterMovement")
 inputs = NodePath("..")
 next_state = NodePath("../AimAtPlayerState")
 
-[node name="AimAtPlayerState" type="Node" parent="Control/EnemyInputs" index="2" node_paths=PackedStringArray("inputs", "character_movement", "character_body", "next_state")]
+[node name="AimAtPlayerState" type="Node" parent="Control/EnemyInputs" index="2" node_paths=PackedStringArray("inputs", "character_movement", "character_body", "firepoint", "next_state")]
 script = ExtResource("7_ia5cy")
 inputs = NodePath("..")
 character_movement = NodePath("../../CharacterMovement")
 character_body = NodePath("../../..")
+firepoint = NodePath("../../../MeshInstance3D2/Firepoint")
 next_state = NodePath("../ShootState")
 
 [node name="ShootState" type="Node" parent="Control/EnemyInputs" index="3" node_paths=PackedStringArray("inputs", "next_state")]
