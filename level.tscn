@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://bof588v2k85x1"]
 
-[ext_resource type="PackedScene" uid="uid://c7fldyilqdf73" path="res://dome/hemisphere.tscn" id="1_4po3j"]
+[ext_resource type="PackedScene" uid="uid://c7fldyilqdf73" path="res://objects/dome/hemisphere.tscn" id="1_4po3j"]
 [ext_resource type="PackedScene" uid="uid://d3kkn2idgjotw" path="res://character/player/player.tscn" id="1_6hflv"]
-[ext_resource type="PackedScene" uid="uid://bv8p0ro6ci4wl" path="res://character/enemy/enemy.tscn" id="4_clud1"]
-[ext_resource type="PackedScene" uid="uid://b7t8fb13vp205" path="res://dome/icosphere.tscn" id="4_kft5k"]
-[ext_resource type="Script" path="res://dynamic_objects.gd" id="5_khe07"]
+[ext_resource type="Script" path="res://objects/dynamic_objects.gd" id="2_y7lmr"]
+[ext_resource type="PackedScene" uid="uid://b7t8fb13vp205" path="res://objects/dome/icosphere.tscn" id="4_kft5k"]
+[ext_resource type="PackedScene" uid="uid://dwv3evqmc6uqm" path="res://objects/spawner/spawner.tscn" id="5_6nilx"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_528qu"]
 
@@ -36,7 +36,7 @@ mesh = SubResource("PlaneMesh_3hatp")
 skeleton = NodePath("../..")
 
 [node name="Platform" type="StaticBody3D" parent="Static"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699092, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69909, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Platform"]
@@ -48,6 +48,9 @@ mesh = SubResource("BoxMesh_38jm2")
 [node name="hemisphere" parent="Static" instance=ExtResource("1_4po3j")]
 visible = false
 
+[node name="Dynamic" type="Node3D" parent="."]
+script = ExtResource("2_y7lmr")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rqok1")
 
@@ -57,10 +60,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 [node name="icosphere" parent="." instance=ExtResource("4_kft5k")]
 
 [node name="Player" parent="." instance=ExtResource("1_6hflv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="Enemy" parent="." instance=ExtResource("4_clud1")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0, -8)
-
-[node name="Dynamic" type="Node3D" parent="."]
-script = ExtResource("5_khe07")
+[node name="Spawner" parent="." instance=ExtResource("5_6nilx")]

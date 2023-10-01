@@ -9,6 +9,7 @@ class_name Health
     if current == value:
       return
     current = value
-    MessageBus.on_player_health_changed.emit(value)
+    if character_body.type == Enums.CharacterType.PLAYER:
+      MessageBus.on_player_health_changed.emit(value)
     if current <= 0:
       character_body.die()

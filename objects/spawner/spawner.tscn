@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwv3evqmc6uqm"]
+
+[ext_resource type="Script" path="res://objects/spawner/spawner.gd" id="1_bs3gx"]
+[ext_resource type="PackedScene" uid="uid://bv8p0ro6ci4wl" path="res://character/enemy/enemy.tscn" id="2_02gcj"]
+
+[sub_resource type="Curve3D" id="Curve3D_smipo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 1, 0, 1, 1, 0, -1, 0, 0, 0, -1, 0, 1, 1, 0, 1, 0, 0, 0, -1, 0, -1, -1, 0, 1, 0, 0, 0, 0, 0, 0, -1, 0, -1, -1, 0, -1, 1, 0, 1, 1, 0, -1),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Spawner" type="Node3D" node_paths=PackedStringArray("path_follow", "upgrade_spawner_timer")]
+script = ExtResource("1_bs3gx")
+max_path_offset = 15.0
+path_follow = NodePath("Path3D/PathFollow3D")
+enemy_scenes = Array[PackedScene]([ExtResource("2_02gcj")])
+upgrade_spawner_timer = NodePath("UpgradeSpawnerTimer")
+
+[node name="UpgradeSpawnerTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_smipo")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.707102, 0, 0.707102, 0, 1, 0, -0.707102, 0, 0.707102, 1, 0, -1)
+use_model_front = true

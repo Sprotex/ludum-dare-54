@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b5fr6aiujqd0a"
-path="res://.godot/imported/hemisphere.gltf-f66a4aa9313db0dab0107b3846012ea8.scn"
+path="res://.godot/imported/hemisphere.gltf-561d131605eff651cb42e728ba3cdaea.scn"
 
 [deps]
 
-source_file="res://dome/hemisphere.gltf"
-dest_files=["res://.godot/imported/hemisphere.gltf-f66a4aa9313db0dab0107b3846012ea8.scn"]
+source_file="res://objects/dome/hemisphere.gltf"
+dest_files=["res://.godot/imported/hemisphere.gltf-561d131605eff651cb42e728ba3cdaea.scn"]
 
 [params]
 
