@@ -27,7 +27,6 @@ func _add_hearts(count: int) -> void:
 func _handle_player_health_changed(hearts: int) -> void:
   var current_hearts = get_child_count()
   var change = abs(hearts - current_hearts)
-  print(change)
   if hearts < current_hearts:
     _remove_hearts(change)
     return

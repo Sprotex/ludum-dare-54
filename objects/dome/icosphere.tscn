@@ -1,5 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7t8fb13vp205"]
 
-[ext_resource type="PackedScene" uid="uid://deyt8a5v3kqhe" path="res://dome/icosphere.gltf" id="1_arhg0"]
+[ext_resource type="PackedScene" uid="uid://deyt8a5v3kqhe" path="res://objects/dome/icosphere.gltf" id="1_arhg0"]
 
 [node name="icosphere" instance=ExtResource("1_arhg0")]
