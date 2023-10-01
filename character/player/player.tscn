@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3kkn2idgjotw"]
+[gd_scene load_steps=6 format=3 uid="uid://d3kkn2idgjotw"]
 
 [ext_resource type="Script" path="res://character/player/player_movement.gd" id="1_asweq"]
 [ext_resource type="PackedScene" uid="uid://d222y8cfa7ept" path="res://character/character.tscn" id="1_t25yq"]
 [ext_resource type="Script" path="res://character/player/player_inputs.gd" id="2_p7gc2"]
 [ext_resource type="Script" path="res://character/player/camera_rig.gd" id="3_le5wo"]
+[ext_resource type="Script" path="res://character/player/player_broadcaster.gd" id="5_s5e6c"]
 
 [node name="Player" instance=ExtResource("1_t25yq")]
 type = 1
@@ -26,3 +27,7 @@ script = ExtResource("3_le5wo")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46911, 2.18216)
+
+[node name="PlayerBroadcaster" type="Node" parent="." index="7" node_paths=PackedStringArray("player")]
+script = ExtResource("5_s5e6c")
+player = NodePath("..")

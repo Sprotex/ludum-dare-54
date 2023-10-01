@@ -6,5 +6,6 @@ class_name WaitState
 
 
 func _handle_ai_state_enabled() -> void:
-  await wait_for(wait_time).timeout
+  wait_for(wait_time)
+  await on_wait_timeout
   enabled = false

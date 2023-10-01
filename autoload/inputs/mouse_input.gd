@@ -4,7 +4,7 @@ extends Node
 func _handle_movement(event: InputEvent) -> void:
   if not event is InputEventMouseMotion:
     return
-  GameInputs.rotation += event.relative
+  GameInputs.rotation += event.relative * Constants.PIXEL_TO_DEGREE_RATIO
 
 
 func _handle_buttons(event: InputEvent) -> void:
