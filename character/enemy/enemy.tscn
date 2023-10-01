@@ -33,14 +33,14 @@ script = ExtResource("4_itv3x")
 
 [node name="WaitState" type="Node" parent="Control/EnemyInputs" index="0" node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_fbvcl")
-next_state = NodePath("../AimAtPlayerState")
+next_state = NodePath("../RandomMoveState")
 enabled = true
 
 [node name="RandomMoveState" type="Node" parent="Control/EnemyInputs" index="1" node_paths=PackedStringArray("character_movement", "inputs", "next_state")]
 script = ExtResource("6_3rkmt")
 character_movement = NodePath("../../CharacterMovement")
 inputs = NodePath("..")
-next_state = NodePath("../WaitState")
+next_state = NodePath("../AimAtPlayerState")
 
 [node name="AimAtPlayerState" type="Node" parent="Control/EnemyInputs" index="2" node_paths=PackedStringArray("inputs", "character_movement", "character_body", "next_state")]
 script = ExtResource("7_ia5cy")
