@@ -12,8 +12,9 @@ size = Vector3(0.6, 0.3, 0.3)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mw0j"]
 
-[node name="Character" type="CharacterBody3D"]
+[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_2poh3")
+health = NodePath("Health")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

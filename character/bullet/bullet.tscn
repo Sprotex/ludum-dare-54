@@ -33,9 +33,9 @@ mesh = SubResource("CylinderMesh_t74t5")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_xl1i8")
 
-[node name="BulletCollisions" type="Node" parent="." node_paths=PackedStringArray("character_body", "particles")]
+[node name="BulletCollisions" type="Node" parent="." node_paths=PackedStringArray("bullet_body", "particles")]
 script = ExtResource("3_0rm1p")
-character_body = NodePath("..")
+bullet_body = NodePath("..")
 particles = NodePath("../CPUParticles3D")
 
 [node name="BulletMovement" type="Node" parent="." node_paths=PackedStringArray("character_body", "inputs")]
