@@ -47,6 +47,7 @@ script = ExtResource("3_v485l")
 character_body = NodePath("..")
 inputs = NodePath("../BulletInputs")
 movement_speed = 10.0
+retain_movement_scale = 0.0
 
 [node name="BulletInputs" type="Node" parent="."]
 script = ExtResource("2_dovvs")

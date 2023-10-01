@@ -26,12 +26,6 @@ func calculate_jump_movement(current_movement: Vector3) -> Vector3:
   return current_movement - get_gravity_vector() * jump_power
 
 
-func calculate_gravity_movement(current_movement: Vector3, _delta: float) -> Vector3:
-  if character_body.is_on_floor():
-    return current_movement
-  return current_movement + get_gravity_vector() * get_gravity_magnitude() * _delta
-
-
 func calculate_friction_movement(current_movement: Vector3) -> Vector3:
   current_movement.y += character_body.velocity.y
   var current_friction_multiplier = friction_multiplier
