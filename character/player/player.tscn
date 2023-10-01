@@ -22,11 +22,10 @@ inputs = NodePath("../PlayerInputs")
 script = ExtResource("2_p7gc2")
 
 [node name="CameraRig" type="Node3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 script = ExtResource("3_le5wo")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46911, 2.18216)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.96911, 2.18216)
 
 [node name="PlayerBroadcaster" type="Node" parent="." index="7" node_paths=PackedStringArray("player")]
 script = ExtResource("5_s5e6c")
