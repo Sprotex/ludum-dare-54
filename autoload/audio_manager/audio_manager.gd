@@ -2,7 +2,13 @@ extends Node
 
 @export var music_player: AudioStreamPlayer
 @export var audio_player_container: Node
-@export var test_audio_stream: AudioStream
+@export var laser_audio: AudioStream
+@export var step_audio: AudioStream
+@export var ricochet_audio: AudioStream
+@export var player_death_audio: AudioStream
+@export var enemy_death_audio: AudioStream
+
+
 @export var music_start_init_delay := 1.0
 
 @onready var audio_players = audio_player_container.get_children()
