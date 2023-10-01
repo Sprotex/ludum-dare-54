@@ -175,7 +175,7 @@ character_body = NodePath("..")
 tree_root = SubResource("AnimationNodeStateMachine_8r2x6")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/bobbing/blend_position = 0.0136364
+parameters/bobbing/blend_position = 0.0
 script = ExtResource("6_ucta8")
 character_body = NodePath("..")
 
