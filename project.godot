@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameInputs="*res://autoload/inputs/game_inputs.tscn"
 UserInterface="*res://autoload/user_interface/user_interface.tscn"
 MessageBus="*res://autoload/message_bus/message_bus.gd"
+AudioManager="*res://autoload/audio_manager/audio_manager.tscn"
 
 [input]
 
