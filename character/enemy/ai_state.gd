@@ -5,34 +5,8 @@ class_name AIState
 signal on_ai_state_enabled
 signal on_ai_state_disabled
 
-signal on_turn_completed
-signal on_move_completed
+signal on_transformation_finished
 signal on_wait_timeout
-
-
-func wait_for(wait_time: float) -> void:
-  await get_tree().create_timer(wait_time).timeout
-  on_wait_timeout.emit()
-
-
-func turn(inputs: EnemyInputs, character_movement: CharacterMovement, rotation: float) -> void:
-  var rotation_time = abs(rotation) / character_movement.rotation_speed
-  inputs.rotation = Vector2.RIGHT * sign(rotation)
-  wait_for(rotation_time)
-  await on_wait_timeout
-  inputs.rotation = Vector2.ZERO
-  on_turn_completed.emit()
-
-
-func move(inputs: EnemyInputs, character_movement: CharacterMovement, distance: float) -> void:
-  var move_distance = distance / character_movement.movement_speed
-  var move_time = move_distance / character_movement.movement_speed
-  inputs.movement = Vector3.FORWARD
-  wait_for(move_time)
-  await on_wait_timeout
-  inputs.movement = Vector3.ZERO
-  on_move_completed.emit()
-
 
 @export var next_state: AIState
 @export var enabled = false:
@@ -46,6 +20,34 @@ func move(inputs: EnemyInputs, character_movement: CharacterMovement, distance: 
     on_ai_state_disabled.emit()
     next_state.enabled = true
 
+
+func wait_for(wait_time: float) -> void:
+  await get_tree().create_timer(wait_time).timeout
+  on_wait_timeout.emit()
+
+
+func _transform(inputs: EnemyInputs, character_movement: CharacterMovement, difference: float, type: Enums.TransformType) -> void:
+  var speed = character_movement.movement_speed
+  var value_name = "movement"
+  var value = Vector3.FORWARD
+  if type == Enums.TransformType.TURN:
+    speed = character_movement.rotation_speed
+    value_name = "rotation"
+    value = Vector3.RIGHT * sign(difference)
+  var transformation_time = abs(difference) / speed
+  inputs.set(value_name, value)
+  wait_for(transformation_time)
+  await on_wait_timeout
+  inputs.set(value_name, Vector3.ZERO)
+  on_transformation_finished.emit()
+  
+
+func turn(inputs: EnemyInputs, character_movement: CharacterMovement, rotation: float) -> void:
+  _transform(inputs, character_movement, rotation, Enums.TransformType.TURN)
+
+
+func move(inputs: EnemyInputs, character_movement: CharacterMovement, distance: float) -> void:
+  _transform(inputs, character_movement, distance, Enums.TransformType.MOVE)
 
 
 func _ready():

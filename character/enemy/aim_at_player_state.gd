@@ -18,5 +18,5 @@ func _handle_ai_state_enabled() -> void:
   var direction_to_player = (player.global_transform.origin - character_body.global_transform.origin).normalized()
   var to_player_angle = direction_to_player.signed_angle_to(forward, Vector3.UP)
   turn(inputs, character_movement, to_player_angle)
-  await on_turn_completed
+  await on_transformation_finished
   enabled = false

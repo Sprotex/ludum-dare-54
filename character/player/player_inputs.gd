@@ -10,7 +10,7 @@ func _ready() -> void:
 func _handle_player_died() -> void:
   set_process(false)
   movement = Vector3.ZERO
-  rotation = Vector2.ZERO
+  rotation = Vector3.ZERO
   shooting = false
 
 
