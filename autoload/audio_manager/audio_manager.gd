@@ -12,6 +12,8 @@ extends Node
 
 @onready var random = RandomNumberGenerator.new()
 
+var player: Character
+
 @onready var audio_players = audio_player_container.get_children()
 var next_audio_index = 0:
   set(value):
@@ -23,6 +25,9 @@ var next_audio_index = 0:
 func _ready() -> void:
   _reset()
   MessageBus.on_scene_reloaded.connect(_reset)
+  MessageBus.on_player_object_broadcast.connect(func(object): player = object)
+  MessageBus.on_player_died.connect(func(): play_audio_positionless(player_death_audio))
+  MessageBus.on_enemy_died.connect(func(enemy): play_audio(enemy.global_position, enemy_death_audio))
 
 
 func _reset() -> void:
@@ -31,6 +36,12 @@ func _reset() -> void:
     audio_player.stop()
   await get_tree().create_timer(music_start_init_delay).timeout
   music_player.play()
+
+
+func play_audio_positionless(audio_stream: AudioStream, randomize_pitch: bool = true) -> void:
+  if not player:
+    MessageBus.on_player_object_requested.emit()
+  play_audio(player.global_position, audio_stream, randomize_pitch)
 
 
 func play_audio(position: Vector3, audio_stream: AudioStream, randomize_pitch: bool = true) -> void:
