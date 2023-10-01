@@ -13,7 +13,7 @@ var is_reloading := false
 
 func shoot() -> void:
   var bullet_instance = bullet.instantiate()
-  get_tree().get_root().add_child(bullet_instance)
+  MessageBus.on_object_created.emit(bullet_instance)
   bullet_instance.global_position = firepoint.global_position
   bullet_instance.global_rotation = firepoint_direction.global_rotation
   if character_body.type == Enums.CharacterType.PLAYER:

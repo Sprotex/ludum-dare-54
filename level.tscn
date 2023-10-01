@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bof588v2k85x1"]
+[gd_scene load_steps=11 format=3 uid="uid://bof588v2k85x1"]
 
 [ext_resource type="PackedScene" uid="uid://c7fldyilqdf73" path="res://dome/hemisphere.tscn" id="1_4po3j"]
 [ext_resource type="PackedScene" uid="uid://d3kkn2idgjotw" path="res://character/player/player.tscn" id="1_6hflv"]
 [ext_resource type="PackedScene" uid="uid://bv8p0ro6ci4wl" path="res://character/enemy/enemy.tscn" id="4_clud1"]
 [ext_resource type="PackedScene" uid="uid://b7t8fb13vp205" path="res://dome/icosphere.tscn" id="4_kft5k"]
+[ext_resource type="Script" path="res://dynamic_objects.gd" id="5_khe07"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_528qu"]
 
@@ -60,3 +61,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="Enemy" parent="." instance=ExtResource("4_clud1")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0, -8)
+
+[node name="Dynamic" type="Node3D" parent="."]
+script = ExtResource("5_khe07")
