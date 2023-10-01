@@ -2,9 +2,7 @@ extends CharacterBody3D
 
 class_name Character
 
-enum Type { OTHER, PLAYER, ENEMY  }
-
-@export var type: Character.Type
+@export var type: Enums.CharacterType
 var health: Health
 
 func set_health() -> void:
@@ -16,10 +14,10 @@ func set_health() -> void:
 
 
 func die() -> void:
-  if type == Type.PLAYER:
+  if type == Enums.CharacterType.PLAYER:
     MessageBus.on_player_died.emit()
     return
-  if type == Type.ENEMY:
+  if type == Enums.CharacterType.ENEMY:
     MessageBus.on_enemy_died.emit()
   queue_free()
 

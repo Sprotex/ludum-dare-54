@@ -10,7 +10,7 @@
 script = ExtResource("1_a043w")
 death_screen = NodePath("Anchors/DeathScreen")
 static_set_nodes = [NodePath("Anchors")]
-descending_stop_nodes = [NodePath(""), NodePath("")]
+descending_stop_nodes = [NodePath("Anchors/TopLeftAnchor"), NodePath("Anchors/BottomLeftAnchor")]
 hide_nodes = [NodePath("Anchors/DeathScreen")]
 
 [node name="Anchors" type="Control" parent="."]

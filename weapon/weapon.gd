@@ -16,7 +16,7 @@ func shoot() -> void:
   get_tree().get_root().add_child(bullet_instance)
   bullet_instance.global_position = firepoint.global_position
   bullet_instance.global_rotation = firepoint_direction.global_rotation
-  if character_body.type == Character.Type.PLAYER:
+  if character_body.type == Enums.CharacterType.PLAYER:
     MessageBus.on_player_shot.emit(reload_time)
 
 
