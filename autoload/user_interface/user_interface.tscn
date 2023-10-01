@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8kvui44qiu65"]
+[gd_scene load_steps=10 format=3 uid="uid://c8kvui44qiu65"]
 
 [ext_resource type="Script" path="res://autoload/user_interface/user_interface.gd" id="1_a043w"]
 [ext_resource type="Script" path="res://autoload/user_interface/score_manager.gd" id="2_gftuk"]
 [ext_resource type="Theme" uid="uid://crcsfc84y04b8" path="res://asset/default_theme.tres" id="2_jswtf"]
 [ext_resource type="Script" path="res://autoload/user_interface/score_label.gd" id="2_y53gy"]
-[ext_resource type="Texture2D" uid="uid://q2i4cs5jl1pf" path="res://icon.svg" id="3_kw0jx"]
+[ext_resource type="Texture2D" uid="uid://cn54nhghdm06q" path="res://asset/white.png" id="4_1qeaf"]
+[ext_resource type="Texture2D" uid="uid://cv40oesauh6n7" path="res://asset/bullet.png" id="4_g46te"]
 [ext_resource type="Script" path="res://autoload/user_interface/reload_progress_bar.gd" id="4_vokve"]
 [ext_resource type="Script" path="res://autoload/user_interface/health_user_interface.gd" id="5_ujoqm"]
 [ext_resource type="PackedScene" uid="uid://bsrx8i4afxbb2" path="res://autoload/user_interface/health_scene.tscn" id="6_dxy0m"]
@@ -71,8 +72,8 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 fill_mode = 4
-texture_under = ExtResource("3_kw0jx")
-texture_progress = ExtResource("3_kw0jx")
+texture_under = ExtResource("4_1qeaf")
+texture_progress = ExtResource("4_g46te")
 tint_under = Color(0.231373, 0.231373, 0.231373, 1)
 script = ExtResource("4_vokve")
 

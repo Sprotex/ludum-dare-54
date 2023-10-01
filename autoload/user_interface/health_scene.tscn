@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bsrx8i4afxbb2"]
 
-[ext_resource type="Texture2D" uid="uid://q2i4cs5jl1pf" path="res://icon.svg" id="1_4smns"]
+[ext_resource type="Texture2D" uid="uid://cqtqg6ou5pjdn" path="res://asset/heart.png" id="1_qhw3j"]
 
 [node name="health_scene" type="TextureRect"]
-texture = ExtResource("1_4smns")
+texture = ExtResource("1_qhw3j")
