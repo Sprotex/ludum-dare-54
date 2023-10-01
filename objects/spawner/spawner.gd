@@ -35,6 +35,6 @@ func _ready() -> void:
   await get_tree().create_timer(enemy_death_respawn_period).timeout
   for i in start_spawn_count:
     _spawn_enemy()
-  MessageBus.on_enemy_died.connect(_respawn_enemy)
+  MessageBus.on_enemy_died.connect(func(_enemy): _respawn_enemy())
   upgrade_spawner_timer.timeout.connect(_spawn_enemy)
   upgrade_spawner_timer.timeout.connect(func(): upgrade_spawner_timer.start())

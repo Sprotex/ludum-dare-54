@@ -12,5 +12,5 @@ func die() -> void:
     health.queue_free()
     return
   if type == Enums.CharacterType.ENEMY:
-    MessageBus.on_enemy_died.emit()
+    MessageBus.on_enemy_died.emit(self)
   queue_free()

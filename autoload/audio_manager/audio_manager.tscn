@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=3 uid="uid://4aljspmi2g55"]
+
+[ext_resource type="Script" path="res://autoload/audio_manager/audio_manager.gd" id="1_c514h"]
+[ext_resource type="AudioStream" uid="uid://cldgvfw0lbomf" path="res://audio/music/loop.ogg" id="2_fp4v5"]
+[ext_resource type="AudioStream" uid="uid://b4bl7aowtwxoo" path="res://audio/laser.ogg" id="2_oy8ek"]
+[ext_resource type="AudioStream" uid="uid://dxmqt3l21ahko" path="res://audio/step.ogg" id="3_l5yj8"]
+[ext_resource type="AudioStream" uid="uid://bqnsjcfoyys43" path="res://audio/ricochet.ogg" id="4_6j063"]
+[ext_resource type="AudioStream" uid="uid://mcbukx6lqifd" path="res://audio/enemy.ogg" id="5_pfd0d"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("music_player", "audio_player_container")]
+script = ExtResource("1_c514h")
+music_player = NodePath("MusicPlayer")
+audio_player_container = NodePath("AudioPlayers")
+laser_audio = ExtResource("2_oy8ek")
+step_audio = ExtResource("3_l5yj8")
+ricochet_audio = ExtResource("4_6j063")
+player_death_audio = ExtResource("5_pfd0d")
+enemy_death_audio = ExtResource("5_pfd0d")
+random_pitch_width = 0.3
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fp4v5")
+bus = &"Music"
+
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer2" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer3" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer4" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer5" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer6" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer7" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer8" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer9" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer10" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer11" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer12" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer13" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer14" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer15" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer16" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer17" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer18" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer19" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer20" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer21" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer22" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer23" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer24" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer25" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer26" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer27" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer28" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer29" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer30" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer31" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"
+
+[node name="AudioPlayer32" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+bus = &"Sound"

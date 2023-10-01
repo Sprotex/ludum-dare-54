@@ -6,6 +6,7 @@ extends Node
 
 
 func _ricochet(collision: KinematicCollision3D) -> void:
+  AudioManager.play_audio(bullet_body.global_position, AudioManager.ricochet_audio)
   var collision_normal = collision.get_normal()
   var travel_direction = collision.get_travel()
   var reflected_direction = travel_direction.bounce(collision_normal)

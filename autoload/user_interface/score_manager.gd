@@ -13,4 +13,4 @@ func _reset() -> void:
 
 func _ready() -> void:
   MessageBus.on_scene_reloaded.connect(_reset)
-  MessageBus.on_enemy_died.connect(func(): score += 1)
+  MessageBus.on_enemy_died.connect(func(_enemy): score += 1)
