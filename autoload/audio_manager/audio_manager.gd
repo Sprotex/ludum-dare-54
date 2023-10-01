@@ -15,7 +15,7 @@ extends Node
 @onready var audio_players = audio_player_container.get_children()
 var next_audio_index = 0:
   set(value):
-    if value > len(audio_players):
+    if value >= len(audio_players):
       value = 0
     next_audio_index = value
 

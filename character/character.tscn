@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d222y8cfa7ept"]
+[gd_scene load_steps=9 format=3 uid="uid://d222y8cfa7ept"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_2poh3"]
 [ext_resource type="Script" path="res://character/health.gd" id="3_bw4ni"]
 [ext_resource type="PackedScene" uid="uid://bi7ck8n3ra58w" path="res://objects/weapon/weapon.tscn" id="4_5vcc8"]
+[ext_resource type="Script" path="res://character/step_audio_logic.gd" id="5_5heol"]
 [ext_resource type="PackedScene" uid="uid://bem04yqq2onsr" path="res://character/bullet/bullet.tscn" id="5_wndih"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dhca4"]
@@ -43,3 +44,7 @@ script = ExtResource("3_bw4ni")
 character_body = NodePath("..")
 
 [node name="Control" type="Node" parent="."]
+
+[node name="StepAudioLogic" type="Node" parent="." node_paths=PackedStringArray("character_body")]
+script = ExtResource("5_5heol")
+character_body = NodePath("..")

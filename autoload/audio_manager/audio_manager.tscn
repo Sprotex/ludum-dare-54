@@ -16,6 +16,7 @@ step_audio = ExtResource("3_l5yj8")
 ricochet_audio = ExtResource("4_6j063")
 player_death_audio = ExtResource("5_pfd0d")
 enemy_death_audio = ExtResource("5_pfd0d")
+random_pitch_width = 0.3
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fp4v5")
