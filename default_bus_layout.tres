@@ -1,11 +1,10 @@
 [gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://bqvh27d1w4aa2"]
 
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_qjrqa"]
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_qol81"]
 resource_name = "Reverb"
+room_size = 1.0
 
 [resource]
-bus/0/effect/0/effect = SubResource("AudioEffectReverb_qjrqa")
-bus/0/effect/0/enabled = true
 bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
@@ -18,3 +17,5 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = -12.4611
 bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectReverb_qol81")
+bus/2/effect/0/enabled = true
