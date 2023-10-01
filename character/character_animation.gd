@@ -13,6 +13,6 @@ func _get_bobbing_value() -> float:
   return character_body.velocity.length()
 
 
-func _process(delta):
+func _process(_delta):
   var animation_bobbing = _get_bobbing_value()
   set("parameters/bobbing/blend_position", animation_bobbing)
