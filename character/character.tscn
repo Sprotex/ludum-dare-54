@@ -154,7 +154,7 @@ mesh = SubResource("BoxMesh_87ork")
 skeleton = NodePath("")
 
 [node name="Firepoint" type="Marker3D" parent="MeshInstance3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0134211, -0.537678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0134211, -0.277678)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

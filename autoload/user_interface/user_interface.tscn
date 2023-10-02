@@ -27,28 +27,6 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_jswtf")
 
-[node name="TopLeftAnchor" type="MarginContainer" parent="Anchors"]
-layout_mode = 1
-offset_right = 72.0
-offset_bottom = 31.0
-mouse_filter = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Anchors/TopLeftAnchor"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="Anchors/TopLeftAnchor/HBoxContainer"]
-layout_mode = 2
-text = "Score: "
-
-[node name="Score counter" type="Label" parent="Anchors/TopLeftAnchor/HBoxContainer"]
-layout_mode = 2
-text = "0"
-script = ExtResource("2_y53gy")
-
 [node name="BottomLeftAnchor" type="MarginContainer" parent="Anchors"]
 layout_mode = 1
 anchors_preset = 2
@@ -139,6 +117,28 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 text = "Restart"
+
+[node name="TopLeftAnchor" type="MarginContainer" parent="Anchors"]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 55.0
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Anchors/TopLeftAnchor"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Anchors/TopLeftAnchor/HBoxContainer"]
+layout_mode = 2
+text = "Score: "
+
+[node name="Score counter" type="Label" parent="Anchors/TopLeftAnchor/HBoxContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("2_y53gy")
 
 [node name="ScoreManager" type="Node" parent="."]
 script = ExtResource("2_gftuk")

@@ -28,7 +28,7 @@ layers = 2
 material_override = ExtResource("2_jmj62")
 
 [node name="LaserRig" type="Node3D" parent="MeshInstance3D2/Firepoint" index="0" node_paths=PackedStringArray("rotation_source")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.408264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.108264)
 script = ExtResource("3_fct6o")
 rotation_source = NodePath("../../../CameraRig/Camera3D")
 
@@ -52,11 +52,21 @@ rotation_speed = 0.3
 [node name="PlayerInputs" type="Node" parent="Control" index="1"]
 script = ExtResource("2_p7gc2")
 
-[node name="CameraRig" type="Node3D" parent="." index="6"]
+[node name="CameraRig" type="Marker3D" parent="." index="6" node_paths=PackedStringArray("raycast", "camera", "inputs")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.1, 0)
 script = ExtResource("3_le5wo")
+raycast = NodePath("RayCast3D")
+camera = NodePath("Camera3D")
+inputs = NodePath("../Control/PlayerInputs")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.68658, 1.75232)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 2.38419e-07, 1, -2)
+doppler_tracking = 1
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraRig" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0.00499997)
+target_position = Vector3(0, 1, -2)
+hit_from_inside = true
 
 [node name="PlayerBroadcaster" type="Node" parent="." index="7" node_paths=PackedStringArray("player")]
 script = ExtResource("5_s5e6c")
