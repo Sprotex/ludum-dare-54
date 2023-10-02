@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3kkn2idgjotw"]
+[gd_scene load_steps=10 format=3 uid="uid://d3kkn2idgjotw"]
 
 [ext_resource type="Script" path="res://character/player/player_movement.gd" id="1_asweq"]
 [ext_resource type="PackedScene" uid="uid://d222y8cfa7ept" path="res://character/character.tscn" id="1_t25yq"]
 [ext_resource type="Material" uid="uid://cbur8gewha2te" path="res://character/player/player_material.tres" id="2_jmj62"]
 [ext_resource type="Script" path="res://character/player/player_inputs.gd" id="2_p7gc2"]
+[ext_resource type="Script" path="res://character/player/copy_x_rotation.gd" id="3_fct6o"]
 [ext_resource type="Script" path="res://character/player/camera_rig.gd" id="3_le5wo"]
+[ext_resource type="Material" uid="uid://cyqolvaksjvwp" path="res://character/enemy/enemy_material.tres" id="3_wu0wv"]
 [ext_resource type="Script" path="res://character/player/player_broadcaster.gd" id="5_s5e6c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_djh3w"]
+size = Vector3(0.01, 0.01, 50)
 
 [node name="Player" instance=ExtResource("1_t25yq")]
 type = 1
@@ -17,6 +22,17 @@ material_override = ExtResource("2_jmj62")
 [node name="MeshInstance3D2" parent="." index="1"]
 layers = 2
 material_override = ExtResource("2_jmj62")
+
+[node name="LaserRig" type="Node3D" parent="MeshInstance3D2/Firepoint" index="0" node_paths=PackedStringArray("rotation_source")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.408264)
+script = ExtResource("3_fct6o")
+rotation_source = NodePath("../../../CameraRig/Camera3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D2/Firepoint/LaserRig" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.99)
+material_override = ExtResource("3_wu0wv")
+mesh = SubResource("BoxMesh_djh3w")
+skeleton = NodePath("../..")
 
 [node name="Weapon" parent="." index="3" node_paths=PackedStringArray("inputs", "firepoint_direction")]
 inputs = NodePath("../Control/PlayerInputs")
@@ -36,7 +52,7 @@ script = ExtResource("2_p7gc2")
 script = ExtResource("3_le5wo")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.96911, 2.18216)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.68658, 1.75232)
 
 [node name="PlayerBroadcaster" type="Node" parent="." index="7" node_paths=PackedStringArray("player")]
 script = ExtResource("5_s5e6c")
@@ -45,8 +61,3 @@ player = NodePath("..")
 [node name="AudioListener3D" type="AudioListener3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 current = true
-
-[node name="SpotLight3D" type="SpotLight3D" parent="." index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
-light_energy = 10.0
-spot_range = 20.0

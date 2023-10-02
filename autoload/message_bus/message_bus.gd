@@ -8,6 +8,8 @@ signal on_score_changed(score)
 signal on_player_shot(reload_time)
 
 
+signal on_bullet_shot
+signal on_bullet_deleted
 signal on_object_created(object)
 signal on_player_object_requested
 signal on_player_object_broadcast(player)
