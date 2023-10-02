@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bof588v2k85x1"]
+[gd_scene load_steps=22 format=3 uid="uid://bof588v2k85x1"]
 
 [ext_resource type="PackedScene" uid="uid://c7fldyilqdf73" path="res://objects/dome/hemisphere.tscn" id="1_4po3j"]
 [ext_resource type="PackedScene" uid="uid://d3kkn2idgjotw" path="res://character/player/player.tscn" id="1_6hflv"]
+[ext_resource type="Material" uid="uid://b6hwok8opeqpm" path="res://asset/grid_material.tres" id="2_f50n7"]
 [ext_resource type="Script" path="res://objects/dynamic_objects.gd" id="2_y7lmr"]
 [ext_resource type="PackedScene" uid="uid://b7t8fb13vp205" path="res://objects/dome/icosphere.tscn" id="4_kft5k"]
 [ext_resource type="PackedScene" uid="uid://dwv3evqmc6uqm" path="res://objects/spawner/spawner.tscn" id="5_6nilx"]
@@ -50,7 +51,9 @@ size = Vector3(5, 10, 1)
 points = PackedVector3Array(-2.5, -5, -0.5, -2.5, -5, 0.5, -2.5, 5, -0.5, 2.5, -5, -0.5, 2.5, -5, 0.5, -2.5, 5, 0.5, 2.5, 5, -0.5, 2.5, 5, 0.5)
 
 [sub_resource type="Environment" id="Environment_rqok1"]
+background_mode = 1
 ambient_light_source = 1
+reflected_light_source = 1
 
 [node name="Level" type="Node3D"]
 
@@ -65,6 +68,7 @@ visible = false
 shape = SubResource("WorldBoundaryShape3D_528qu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Floor"]
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PlaneMesh_3hatp")
 skeleton = NodePath("../..")
 
@@ -81,6 +85,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp/Ramp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp/Ramp"]
@@ -93,6 +98,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp/Platform"]
 transform = Transform3D(1.15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_38jm2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp/Platform"]
@@ -105,6 +111,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp/Ramp2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp/Ramp2"]
@@ -121,6 +128,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp2/Ramp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp2/Ramp"]
@@ -133,6 +141,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp2/Platform"]
 transform = Transform3D(1.15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_38jm2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp2/Platform"]
@@ -145,6 +154,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp2/Ramp2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp2/Ramp2"]
@@ -161,6 +171,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp5/Ramp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp5/Ramp"]
@@ -173,6 +184,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp5/Platform"]
 transform = Transform3D(1.15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_38jm2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp5/Platform"]
@@ -185,6 +197,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp5/Ramp2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp5/Ramp2"]
@@ -201,6 +214,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp6/Ramp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp6/Ramp"]
@@ -213,6 +227,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp6/Platform"]
 transform = Transform3D(1.15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_38jm2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp6/Platform"]
@@ -225,6 +240,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp6/Ramp2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp6/Ramp2"]
@@ -241,6 +257,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp3/Ramp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp3/Ramp"]
@@ -253,6 +270,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp3/Platform"]
 transform = Transform3D(1.15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_38jm2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp3/Platform"]
@@ -265,6 +283,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp3/Ramp2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp3/Ramp2"]
@@ -281,6 +300,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp4/Ramp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp4/Ramp"]
@@ -293,6 +313,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp4/Platform"]
 transform = Transform3D(1.15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_38jm2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp4/Platform"]
@@ -305,6 +326,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp4/Ramp2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_lipi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp4/Ramp2"]
@@ -317,6 +339,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/BigRamp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_w38x4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/BigRamp"]
@@ -329,6 +352,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/BigRamp2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_w38x4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/BigRamp2"]
@@ -341,6 +365,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/BigRamp3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_w38x4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/BigRamp3"]
@@ -353,6 +378,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/BigRamp4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_w38x4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/BigRamp4"]
@@ -365,6 +391,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/BigRamp5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("PrismMesh_w38x4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/BigRamp5"]
@@ -376,6 +403,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Bridge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_iw7mw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Bridge"]
@@ -388,6 +416,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Bridge3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_kl05d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Bridge3"]
@@ -400,6 +429,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Bridge2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_iw7mw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Bridge2"]
@@ -412,6 +442,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_dp3q0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Wall"]
@@ -424,6 +455,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Wall5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_dp3q0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Wall5"]
@@ -436,6 +468,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Wall6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_dp3q0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Wall6"]
@@ -448,6 +481,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Wall7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_dp3q0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Wall7"]
@@ -460,6 +494,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Wall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_dp3q0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Wall2"]
@@ -467,11 +502,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("ConvexPolygonShape3D_rafev")
 
 [node name="Wall3" type="StaticBody3D" parent="Static"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -15)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 15, 0, -15)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Wall3"]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_dp3q0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Wall3"]
@@ -484,6 +520,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Wall4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_dp3q0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Wall4"]
@@ -495,9 +532,6 @@ script = ExtResource("2_y7lmr")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rqok1")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="icosphere" parent="." instance=ExtResource("4_kft5k")]
 metadata/_edit_lock_ = true

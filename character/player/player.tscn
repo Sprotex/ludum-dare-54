@@ -1,13 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3kkn2idgjotw"]
+[gd_scene load_steps=7 format=3 uid="uid://d3kkn2idgjotw"]
 
 [ext_resource type="Script" path="res://character/player/player_movement.gd" id="1_asweq"]
 [ext_resource type="PackedScene" uid="uid://d222y8cfa7ept" path="res://character/character.tscn" id="1_t25yq"]
+[ext_resource type="Material" uid="uid://cbur8gewha2te" path="res://character/player/player_material.tres" id="2_jmj62"]
 [ext_resource type="Script" path="res://character/player/player_inputs.gd" id="2_p7gc2"]
 [ext_resource type="Script" path="res://character/player/camera_rig.gd" id="3_le5wo"]
 [ext_resource type="Script" path="res://character/player/player_broadcaster.gd" id="5_s5e6c"]
 
 [node name="Player" instance=ExtResource("1_t25yq")]
 type = 1
+
+[node name="MeshInstance3D" parent="." index="0"]
+layers = 2
+material_override = ExtResource("2_jmj62")
+
+[node name="MeshInstance3D2" parent="." index="1"]
+layers = 2
+material_override = ExtResource("2_jmj62")
 
 [node name="Weapon" parent="." index="3" node_paths=PackedStringArray("inputs", "firepoint_direction")]
 inputs = NodePath("../Control/PlayerInputs")
@@ -36,3 +45,8 @@ player = NodePath("..")
 [node name="AudioListener3D" type="AudioListener3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 current = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+light_energy = 10.0
+spot_range = 20.0
