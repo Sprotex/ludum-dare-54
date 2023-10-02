@@ -11,6 +11,8 @@ func _handle_movement(event: InputEvent) -> void:
 func _handle_buttons(event: InputEvent) -> void:
   if not event is InputEventMouseButton:
     return
+  if event.button_index != MOUSE_BUTTON_LEFT:
+    return
   GameInputs.shooting = event.pressed
 
 
