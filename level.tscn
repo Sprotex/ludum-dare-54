@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://bof588v2k85x1"]
+[gd_scene load_steps=24 format=3 uid="uid://bof588v2k85x1"]
 
 [ext_resource type="PackedScene" uid="uid://c7fldyilqdf73" path="res://objects/dome/hemisphere.tscn" id="1_4po3j"]
 [ext_resource type="PackedScene" uid="uid://d3kkn2idgjotw" path="res://character/player/player.tscn" id="1_6hflv"]
 [ext_resource type="Material" uid="uid://b6hwok8opeqpm" path="res://asset/grid_material.tres" id="2_f50n7"]
 [ext_resource type="Script" path="res://objects/dynamic_objects.gd" id="2_y7lmr"]
 [ext_resource type="PackedScene" uid="uid://b7t8fb13vp205" path="res://objects/dome/icosphere.tscn" id="4_kft5k"]
+[ext_resource type="Script" path="res://ambient_light_energy.gd" id="4_lvhk7"]
 [ext_resource type="PackedScene" uid="uid://dwv3evqmc6uqm" path="res://objects/spawner/spawner.tscn" id="5_6nilx"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_528qu"]
@@ -20,7 +21,10 @@ size = Vector3(5, 2, 3)
 points = PackedVector3Array(-2.5, -1, -1.5, -2.5, 1, -1.5, 2.5, -1, -1.5, -2.5, -1, 1.5, -2.5, 1, 1.5, 2.5, -1, 1.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_38jm2"]
-size = Vector3(7, 2, 3)
+size = Vector3(8, 2, 3)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0vdjd"]
+points = PackedVector3Array(-4, -1, -1.5, -4, 1, -1.5, 4, -1, -1.5, -4, -1, 1.5, -4, 1, 1.5, 4, 1, -1.5, 4, -1, 1.5, 4, 1, 1.5)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6fbb2"]
 points = PackedVector3Array(-3.5, -1, -1.5, -3.5, 1, -1.5, 3.5, -1, -1.5, -3.5, -1, 1.5, -3.5, 1, 1.5, 3.5, 1, -1.5, 3.5, -1, 1.5, 3.5, 1, 1.5)
@@ -52,7 +56,9 @@ points = PackedVector3Array(-2.5, -5, -0.5, -2.5, -5, 0.5, -2.5, 5, -0.5, 2.5, -
 
 [sub_resource type="Environment" id="Environment_rqok1"]
 background_mode = 1
-ambient_light_source = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.0
 reflected_light_source = 1
 
 [node name="Level" type="Node3D"]
@@ -97,13 +103,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23517e-08, 1, 0)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Static/Ramp/Platform"]
-transform = Transform3D(1.15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("2_f50n7")
 mesh = SubResource("BoxMesh_38jm2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ramp/Platform"]
-transform = Transform3D(1.15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_6fbb2")
+shape = SubResource("ConvexPolygonShape3D_0vdjd")
 
 [node name="Ramp2" type="StaticBody3D" parent="Static/Ramp"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.5, 0, 0)
@@ -527,11 +531,16 @@ mesh = SubResource("BoxMesh_dp3q0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("ConvexPolygonShape3D_rafev")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Static"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+light_energy = 16.0
+
 [node name="Dynamic" type="Node3D" parent="."]
 script = ExtResource("2_y7lmr")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rqok1")
+script = ExtResource("4_lvhk7")
 
 [node name="icosphere" parent="." instance=ExtResource("4_kft5k")]
 metadata/_edit_lock_ = true
