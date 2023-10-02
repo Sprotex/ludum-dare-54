@@ -2,3 +2,4 @@
 
 [resource]
 albedo_color = Color(0.109804, 0.588235, 0, 1)
+metallic = 1.0

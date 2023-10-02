@@ -2,5 +2,5 @@
 
 [resource]
 shading_mode = 0
-albedo_color = Color(0.517647, 0.329412, 0.156863, 1)
+albedo_color = Color(0.870588, 0.517647, 0.27451, 1)
 billboard_mode = 1
