@@ -35,8 +35,8 @@ states/bobbing/position = Vector2(480, 100)
 transitions = ["Start", "bobbing", SubResource("AnimationNodeStateMachineTransition_71qr8")]
 graph_offset = Vector2(-222, 8)
 
-[sub_resource type="Animation" id="Animation_qwgfx"]
-resource_name = "default"
+[sub_resource type="Animation" id="Animation_o0a4o"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -105,8 +105,8 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_o0a4o"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_qwgfx"]
+resource_name = "default"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -154,7 +154,7 @@ mesh = SubResource("BoxMesh_87ork")
 skeleton = NodePath("")
 
 [node name="Firepoint" type="Marker3D" parent="MeshInstance3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.086579, -0.537678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0134211, -0.277678)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

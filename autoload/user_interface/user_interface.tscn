@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8kvui44qiu65"]
+[gd_scene load_steps=10 format=3 uid="uid://c8kvui44qiu65"]
 
 [ext_resource type="Script" path="res://autoload/user_interface/user_interface.gd" id="1_a043w"]
 [ext_resource type="Script" path="res://autoload/user_interface/score_manager.gd" id="2_gftuk"]
+[ext_resource type="Theme" uid="uid://crcsfc84y04b8" path="res://asset/default_theme.tres" id="2_jswtf"]
 [ext_resource type="Script" path="res://autoload/user_interface/score_label.gd" id="2_y53gy"]
-[ext_resource type="Texture2D" uid="uid://q2i4cs5jl1pf" path="res://icon.svg" id="3_kw0jx"]
+[ext_resource type="Texture2D" uid="uid://cn54nhghdm06q" path="res://asset/white.png" id="4_1qeaf"]
+[ext_resource type="Texture2D" uid="uid://cv40oesauh6n7" path="res://asset/bullet.png" id="4_g46te"]
 [ext_resource type="Script" path="res://autoload/user_interface/reload_progress_bar.gd" id="4_vokve"]
 [ext_resource type="Script" path="res://autoload/user_interface/health_user_interface.gd" id="5_ujoqm"]
 [ext_resource type="PackedScene" uid="uid://bsrx8i4afxbb2" path="res://autoload/user_interface/health_scene.tscn" id="6_dxy0m"]
@@ -12,7 +14,7 @@
 script = ExtResource("1_a043w")
 death_screen = NodePath("Anchors/DeathScreen")
 static_set_nodes = [NodePath("Anchors")]
-descending_stop_nodes = [NodePath("Anchors/TopRightAnchor"), NodePath("Anchors/BottomLeftAnchor")]
+descending_stop_nodes = [NodePath("Anchors/TopLeftAnchor"), NodePath("Anchors/BottomLeftAnchor")]
 hide_nodes = [NodePath("Anchors/DeathScreen")]
 
 [node name="Anchors" type="Control" parent="."]
@@ -23,28 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="TopRightAnchor" type="MarginContainer" parent="Anchors"]
-layout_mode = 1
-offset_right = 72.0
-offset_bottom = 31.0
-mouse_filter = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Anchors/TopRightAnchor"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="Anchors/TopRightAnchor/HBoxContainer"]
-layout_mode = 2
-text = "Score: "
-
-[node name="Score counter" type="Label" parent="Anchors/TopRightAnchor/HBoxContainer"]
-layout_mode = 2
-text = "0"
-script = ExtResource("2_y53gy")
+theme = ExtResource("2_jswtf")
 
 [node name="BottomLeftAnchor" type="MarginContainer" parent="Anchors"]
 layout_mode = 1
@@ -69,8 +50,8 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 fill_mode = 4
-texture_under = ExtResource("3_kw0jx")
-texture_progress = ExtResource("3_kw0jx")
+texture_under = ExtResource("4_1qeaf")
+texture_progress = ExtResource("4_g46te")
 tint_under = Color(0.231373, 0.231373, 0.231373, 1)
 script = ExtResource("4_vokve")
 
@@ -88,11 +69,13 @@ grow_vertical = 0
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Anchors/BottomRightAnchor"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Anchors/BottomRightAnchor" node_paths=PackedStringArray("emphasis_control")]
 layout_mode = 2
+size_flags_vertical = 8
 alignment = 2
 script = ExtResource("5_ujoqm")
 heart_scene = ExtResource("6_dxy0m")
+emphasis_control = NodePath("..")
 
 [node name="DeathScreen" type="PanelContainer" parent="Anchors"]
 self_modulate = Color(0, 0, 0, 1)
@@ -132,6 +115,28 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 text = "Restart"
+
+[node name="TopLeftAnchor" type="MarginContainer" parent="Anchors"]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 55.0
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Anchors/TopLeftAnchor"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Anchors/TopLeftAnchor/HBoxContainer"]
+layout_mode = 2
+text = "Score: "
+
+[node name="Score counter" type="Label" parent="Anchors/TopLeftAnchor/HBoxContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("2_y53gy")
 
 [node name="ScoreManager" type="Node" parent="."]
 script = ExtResource("2_gftuk")

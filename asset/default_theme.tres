@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://crcsfc84y04b8"]
+
+[ext_resource type="FontFile" uid="uid://qiiln34rbxmv" path="res://asset/SecularOne-Regular.ttf" id="1_en127"]
+
+[resource]
+default_font = ExtResource("1_en127")
+default_font_size = 32

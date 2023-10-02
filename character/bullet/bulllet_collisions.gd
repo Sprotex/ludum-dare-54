@@ -31,6 +31,7 @@ func _can_take_damage(body: Node3D):
 
 func _collide_with_body(body: Character) -> void:
   bullet_body.queue_free()
+  MessageBus.on_bullet_deleted.emit()
   body.health.current -= 1
   _remove_particles()
 
