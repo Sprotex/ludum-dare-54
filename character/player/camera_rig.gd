@@ -10,7 +10,7 @@ class_name CameraRig
 @export var character_body: Character
 
 @onready var camera_starting_point = camera.transform.origin
-@onready var camera_side = 1
+@onready var camera_side = position.x
 
 
 func _ready() -> void:
@@ -24,9 +24,9 @@ func _set_camera_position() -> void:
     var target_position = Vector3(camera_side, position.y, position.z)
     tween.tween_property(self, "position", target_position, 0.5)
   if raycast.is_colliding():
-    camera.global_transform.origin = raycast.get_collision_point()
+    camera.global_position = raycast.get_collision_point()
   else:
-    camera.transform.origin = camera_starting_point
+    camera.position = camera_starting_point
 
 
 func _process(_delta: float) -> void:

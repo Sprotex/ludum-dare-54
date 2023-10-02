@@ -71,13 +71,11 @@ theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Anchors/BottomRightAnchor" node_paths=PackedStringArray("emphasis_control")]
 layout_mode = 2
+size_flags_vertical = 8
 alignment = 2
 script = ExtResource("5_ujoqm")
 heart_scene = ExtResource("6_dxy0m")
 emphasis_control = NodePath("..")
-
-[node name="TextureRect" type="TextureRect" parent="Anchors/BottomRightAnchor/HBoxContainer"]
-layout_mode = 2
 
 [node name="DeathScreen" type="PanelContainer" parent="Anchors"]
 self_modulate = Color(0, 0, 0, 1)

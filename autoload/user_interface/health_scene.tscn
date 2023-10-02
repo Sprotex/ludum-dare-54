@@ -4,3 +4,4 @@
 
 [node name="health_scene" type="TextureRect"]
 texture = ExtResource("1_qhw3j")
+stretch_mode = 4
