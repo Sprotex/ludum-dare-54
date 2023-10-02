@@ -52,12 +52,13 @@ rotation_speed = 0.3
 [node name="PlayerInputs" type="Node" parent="Control" index="1"]
 script = ExtResource("2_p7gc2")
 
-[node name="CameraRig" type="Marker3D" parent="." index="6" node_paths=PackedStringArray("raycast", "camera", "inputs")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.1, 0)
+[node name="CameraRig" type="Marker3D" parent="." index="6" node_paths=PackedStringArray("raycast", "camera", "inputs", "character_body")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.1, 0)
 script = ExtResource("3_le5wo")
 raycast = NodePath("RayCast3D")
 camera = NodePath("Camera3D")
 inputs = NodePath("../Control/PlayerInputs")
+character_body = NodePath("..")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig" index="0"]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 2.38419e-07, 1, -2)
