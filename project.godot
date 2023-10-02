@@ -22,6 +22,11 @@ UserInterface="*res://autoload/user_interface/user_interface.tscn"
 MessageBus="*res://autoload/message_bus/message_bus.gd"
 AudioManager="*res://autoload/audio_manager/audio_manager.tscn"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [input]
 
 move_forward={
@@ -62,3 +67,4 @@ shoot={
 [rendering]
 
 renderer/rendering_method="mobile"
+limits/opengl/max_renderable_lights=128
